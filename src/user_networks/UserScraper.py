@@ -36,8 +36,8 @@ class UserInteractionCollector:
             post = await self.client.submission(id=id)                        
             await self.save_submission_details(post)            
                         
-        except (AttributeError, TimeoutError):
-            print("Submission id {} failed".format(id))
+        except:
+            print("Submission id {} failed (exception occured)".format(id))
 
     async def save_submission_details(self, post):
         '''Saves given submission user interaction details into the users dictionary'''
@@ -158,7 +158,7 @@ async def scrape(
 
             #Print progress             
             if i % print_every == 0:
-                print("Processing batch #{}".format(i))
+                print("[{}] Processing batch #{}".format(datetime.now(), i))
 
             #Do the scraping at batch sizes
             await collector.async_process_posts(batch)
