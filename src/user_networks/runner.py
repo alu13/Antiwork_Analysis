@@ -25,7 +25,7 @@ async def main():
         "save_every": 100,
         "limit": 0,
         "rescrape": False,
-        "file_template": "../../data/user_interactions-batch-{}-{}.csv"
+        "file_template": "../../data/users/user_interactions-batch-{}-{}.csv"
     }
 
     sub_ids_path = "../../data/all_ids.csv"
