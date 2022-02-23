@@ -187,6 +187,7 @@ async def scrape(
                     df['indirects'] = df['indirects'].apply(json.dumps)
                     filename = file_template.format(batch_size, i)
                     df.to_csv(filename, index=False)
+                    del df
                 else:
                     print(" ** Not saved - empty dataframe ** ")
                 
