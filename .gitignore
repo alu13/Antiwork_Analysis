@@ -131,3 +131,6 @@ dmypy.json
 
 #PRAW ini files
 praw.ini
+
+#Large CSVs
+data/users/*.csv
