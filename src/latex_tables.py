@@ -4,7 +4,7 @@ def get_lx_table(caption, data, headers, precision = ".2f"):
     tbl = []
     tbl.append("\\begin{table}[H]")
     tbl.append("\\centering")    
-    tbl.append(tb.tabulate(data, headers=headers, floatfmt= precision, tablefmt="latex_booktabs"))
+    tbl.append(tb.tabulate(data, headers=headers, floatfmt= precision, tablefmt="latex_booktabs", showindex="never"))
     tbl.append("\\caption{{ {:s} }}".format(caption))
     tbl.append("\\vspace{10pt}")
     tbl.append("\\end{table}")
