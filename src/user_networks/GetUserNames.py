@@ -67,25 +67,25 @@ async def scrape(
         args = [iter(iterable)] * n
         return itt.zip_longest(*args, fillvalue=fillvalue)
 
-    max_seen_i = 0    
+    max_seen_i = 0   
+
+    #check if there are files saved already and prepare to skip them
+    if rescrape is False:
+        search_template = file_template.format(batch_size, "*")    
+        p = re.compile("([0-9]+)\.csv")
+        for path in Path(".").glob(search_template):
+            found_id = int(p.findall(path.name)[0])
+            max_seen_i = max(found_id, max_seen_i)
+
+        print("MAX ID found: {}".format(max_seen_i))
+        
+        if max_seen_i > 0:
+            max_seen_i += 1
+            skip_records = (max_seen_i) * batch_size
+            print("Found existing batch files up to batch #{} ({} records)".format(max_seen_i, skip_records))     
 
     for i, batch in enumerate(grouper(reader, batch_size)):
-
-            #check if there are files saved already and prepare to skip them
-        if rescrape is False:
-            search_template = file_template.format(batch_size, "*")    
-            p = re.compile("([0-9]+)\.csv")
-            for path in Path(".").glob(search_template):
-                found_id = int(p.findall(path.name)[0])
-                max_seen_i = max(found_id, max_seen_i)
-
-            
-            if max_seen_i > 0:
-                max_seen_i += 1
-                skip_records = (max_seen_i) * batch_size
-                print("Found existing batch files up to batch #{} ({} records)".format(max_seen_i, skip_records))    
-
-
+        
         if i >= max_seen_i: #skip otherwise
 
             #Print progress             
