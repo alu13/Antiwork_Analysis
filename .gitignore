@@ -134,3 +134,5 @@ praw.ini
 
 #Large CSVs
 data/users/*.csv
+data/submissions/filtered/all_submissions.csv
+data/submissions/raw/all_submissions.csv
