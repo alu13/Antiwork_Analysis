@@ -20,10 +20,10 @@ async def main():
 
     #Scraping / saving parameters
     params = {
-        'batch_size': 1,
+        'batch_size': 100,
         'print_every': 10,
         "save_every": 10,
-        "limit": 10,
+        "limit": 0,
         "rescrape": False,
         "file_template": "../../data/users/leaders/recent-posts-batch-{}-{}.csv"
     }
