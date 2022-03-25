@@ -137,6 +137,9 @@ data/users/*.csv
 data/submissions/filtered/all_submissions.csv
 data/submissions/raw/all_submissions.csv
 data/users/raw/
+interaction_map-indirects-min-100.csv
+adj_matrix-indirects-min-100.npz
+adj_matrix-directs-min-100.npz
 
 #VSCODE
 *.code-workspace
