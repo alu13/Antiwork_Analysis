@@ -22,6 +22,21 @@
     └── user-popularity -> analysis related to post popularity given user atttributes
 ```
 
+# Datasets
+
+The total dataset size on disk that was collected during this project was [X]GB. While it is possible to reproduce it using the steps below, we also provide a way to download raw data instead. The dataset is available at [TBD].
+
+## Reproducing data collection
+
+[WIP], e.g. 
+ - To reproduce the collection of all submission IDs, please run notebook `XYZ`
+
+# Reproducing the analysis
+
+[WIP], e.g. 
+ - To reproduce the user popularity regressions, please run notebook `XYZ`
+
+
 # Authors
 
 Albert Lu, Aurimas Racas, Lawton Walker
