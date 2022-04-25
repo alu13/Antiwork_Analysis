@@ -3,6 +3,7 @@
 [TBD]
 
 # Directory structure
+```
 ├── LICENSE
 ├── README.md
 ├── data -> various extracts of data / images / etc
@@ -19,6 +20,7 @@
     ├── topic-modelling -> analysis related to r\antiwork post topic modelling
     ├── user-networks -> analysis related to user network clusters and connectedness
     └── user-popularity -> analysis related to post popularity given user atttributes
+```
 
 # Authors
 
