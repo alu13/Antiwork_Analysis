@@ -140,6 +140,7 @@ data/users/raw/
 interaction_map-indirects-min-100.csv
 adj_matrix-indirects-min-100.npz
 adj_matrix-directs-min-100.npz
+data/users/users.sqlite.db
 
 #VSCODE
 *.code-workspace
