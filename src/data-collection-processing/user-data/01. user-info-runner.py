@@ -25,10 +25,10 @@ async def main():
         "save_every": 100,
         "limit": 0,
         "rescrape": False,
-        "file_template": "../../data/users/user_interactions-batch-{}-{}.csv"
+        "file_template": "../../../data/users/raw/user_interactions-batch-{}-{}.csv"
     }
 
-    sub_ids_path = "../../data/all_ids.csv"
+    sub_ids_path = "../../../data/all_ids.csv"
 
     #Do the scraping!
     with open(sub_ids_path, newline='') as csvfile:
