@@ -71,5 +71,5 @@ def get_basic_stats(df):
             (pl.col("activity_window")).median().alias("Median activity window (days)"),                        
             (pl.col("avg_post_karma")).median().alias("Median average post karma"),
             (pl.col("avg_comment_karma")).median().alias("Median average comment karma"),
-        ]).collect().filter(pl.col("Total number of users") > 1).transpose(include_header=True, header_name="Statistic")
+        ]).collect().filter(pl.col("Total number of users") > 100).transpose(include_header=True, header_name="Statistic")
     return stats
