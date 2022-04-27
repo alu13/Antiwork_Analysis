@@ -3,9 +3,27 @@ import csv
 import asyncio
 import importlib as imp
 import GetUserNames as scraper
+import datetime
+import polars as pl
 
 
 async def main():
+
+    print("Finding relevant IDs...")
+    start_timestamp = datetime.date(2022,1,10).strftime("%s")
+    end_timestamp = datetime.date(2022,1,17).strftime("%s")
+
+    all_ids = "../../data/ids/all_ids.csv"
+    sub_ids_path = "../../data/users/recent-post-ids.csv"
+
+
+    cut_offs = pl.read_csv(all_ids).filter(
+        (pl.col("created_utc") >= start_timestamp) & 
+        (pl.col("created_utc") <= end_timestamp)
+    )
+
+    cut_offs.to_csv(sub_ids_path)
+
 
     print("Starting the scraping...")
 
@@ -25,10 +43,8 @@ async def main():
         "save_every": 10,
         "limit": 0,
         "rescrape": False,
-        "file_template": "../../data/users/leaders/recent-posts-batch-{}-{}.csv"
+        "file_template": "../../data/users/recent/recent-posts-batch-{}-{}.csv"
     }
-
-    sub_ids_path = "../../data/users/leaders/post_ids.csv"
 
     #Do the scraping!
     with open(sub_ids_path, newline='') as csvfile:

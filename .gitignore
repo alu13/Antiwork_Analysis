@@ -140,6 +140,7 @@ data/users/raw/
 interaction_map-indirects-min-100.csv
 *.npz
 *.sqlite.db
+data/users/recent/*
 
 #VSCODE
 *.code-workspace
