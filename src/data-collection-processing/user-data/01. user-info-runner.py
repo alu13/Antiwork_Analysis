@@ -3,6 +3,7 @@ import csv
 import asyncio
 import importlib as imp
 import UserScraper as scraper
+from pathlib import Path
 
 
 async def main():
@@ -13,7 +14,7 @@ async def main():
     imp.reload(scraper)
 
     #Instantiate the client
-    client = asyncpraw.Reddit('aurimas')
+    client = asyncpraw.Reddit('client')
 
     #Instantiate the class for scraping / storing user info
     collector = scraper.UserInteractionCollector(client=client)
@@ -25,10 +26,12 @@ async def main():
         "save_every": 100,
         "limit": 0,
         "rescrape": False,
-        "file_template": "../../../data/users/raw/user_interactions-batch-{}-{}.csv"
+        "file_template": "data/users/raw/user_interactions-batch-{}-{}.csv"
     }
 
-    sub_ids_path = "../../../data/all_ids.csv"
+    Path("data/users/raw").mkdir(parents=True, exist_ok=True)
+
+    sub_ids_path = "data/ids/all_ids.csv"
 
     #Do the scraping!
     with open(sub_ids_path, newline='') as csvfile:
