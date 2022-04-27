@@ -141,6 +141,7 @@ interaction_map-indirects-min-100.csv
 *.npz
 *.sqlite.db
 data/users/recent/*
+*.tar.gz
 
 #VSCODE
 *.code-workspace
