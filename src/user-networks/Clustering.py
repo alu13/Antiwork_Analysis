@@ -63,7 +63,7 @@ def plot_cluster_diagnostics(results, sizes, eigvalues):
 
     return (c1 | c2 | c3)
 
-def get_basic_stats(df): 
+def get_basic_stats(df, cut_off = 100): 
     stats = df.lazy().groupby("cluster").agg([
             pl.col("no_posts").count().alias("Total number of users"),              
             pl.col("no_posts").median().alias("Median posts per user"),             
@@ -71,5 +71,5 @@ def get_basic_stats(df):
             (pl.col("activity_window")).median().alias("Median activity window (days)"),                        
             (pl.col("avg_post_karma")).median().alias("Median average post karma"),
             (pl.col("avg_comment_karma")).median().alias("Median average comment karma"),
-        ]).collect().filter(pl.col("Total number of users") > 100).transpose(include_header=True, header_name="Statistic")
+        ]).collect().filter(pl.col("Total number of users") > cut_off).transpose(include_header=True, header_name="Statistic")
     return stats
