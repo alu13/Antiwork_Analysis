@@ -5,6 +5,7 @@ import importlib as imp
 import GetUserNames as scraper
 import datetime
 import polars as pl
+from pathlib import Path
 
 
 async def main():
@@ -13,16 +14,20 @@ async def main():
     start_timestamp = datetime.date(2022,1,10).strftime("%s")
     end_timestamp = datetime.date(2022,1,17).strftime("%s")
 
-    all_ids = "../../data/ids/all_ids.csv"
-    sub_ids_path = "../../data/users/recent-post-ids.csv"
+    all_ids = "data/ids/all_ids.csv"
+    sub_ids_path = "data/users/recent-post-ids.csv"
 
 
-    cut_offs = pl.read_csv(all_ids).filter(
-        (pl.col("created_utc") >= start_timestamp) & 
-        (pl.col("created_utc") <= end_timestamp)
+    df = pl.read_csv(all_ids, dtypes={"id": pl.datatypes.Utf8, "created_utc": pl.datatypes.Int32})
+    
+    cut_offs = df.filter(
+        (pl.col("created_utc") >= int(start_timestamp)) & 
+        (pl.col("created_utc") <= int(end_timestamp))
     )
 
     cut_offs.to_csv(sub_ids_path)
+
+    Path("data/users/recent").mkdir(parents=True, exist_ok=True)
 
 
     print("Starting the scraping...")
@@ -31,7 +36,7 @@ async def main():
     imp.reload(scraper)
 
     #Instantiate the client
-    client = asyncpraw.Reddit('aurimas')
+    client = asyncpraw.Reddit('client')
 
     #Instantiate the class for scraping / storing user info
     collector = scraper.PostMetaDataCollector(client=client)
@@ -43,7 +48,7 @@ async def main():
         "save_every": 10,
         "limit": 0,
         "rescrape": False,
-        "file_template": "../../data/users/recent/recent-posts-batch-{}-{}.csv"
+        "file_template": "data/users/recent/recent-posts-batch-{}-{}.csv"
     }
 
     #Do the scraping!
