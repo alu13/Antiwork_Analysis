@@ -69,7 +69,7 @@ If you are using the the SQLite DB we provide, the order of notebooks are run do
 
 - To reproduce data collection related to other subreddits, run notebooks `src/other-subreddits/Reddit_UComment_Subs.ipynb` and `src/other-subreddits/Reddit_UPost_Subs.ipynb` while the user_stats.csv are in the same folder.
 - To reproduce associated regression analysis, run notebook `src/other-subreddits/Subreddit Analysis.ipynb` with user_stats.csv, user_posts_subreddits.csv, and user_comments_subreddits.csv
-- 'src/other-subreddits/Post Statistics.ipynb' was used for the midterm report and not utilized in the final.
+- 'src/other-subreddits/Post Statistics.ipynb' was used for the midterm report and not utilized in the final because the original csv file was corrupted.
 
 ## Authors
 
