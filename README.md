@@ -67,7 +67,7 @@ If you are using the the SQLite DB we provide, the order of notebooks are run do
 
 #### User participation in other subreddits
 
-- To reproduce data collection related to other subreddits, run notebooks `src/other-subreddits/Reddit_UComment_Subs.ipynb` and `src/other-subreddits/Reddit_UPost_Subs.ipynb`
+- To reproduce data collection related to other subreddits, run notebooks `src/other-subreddits/Reddit_UComment_Subs.ipynb` and `src/other-subreddits/Reddit_UPost_Subs.ipynb` while the user_stats.csv is in the same notebook.
 - To reproduce associated regression analysis, run notebook `src/other-subreddits/Subreddit Analysis.ipynb`
 
 ## Authors
